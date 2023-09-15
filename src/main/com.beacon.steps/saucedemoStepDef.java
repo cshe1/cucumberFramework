@@ -1,5 +1,6 @@
 package com.beacon.steps;
 
+import com.beacon.pages.sdHome;
 import io.cucumber.java.en.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,28 +13,45 @@ public class saucedemoStepDef {
 
     @Given("I am on the SauceDemo page")
     public void sauceDemoPage(){
-        driver.get("https://www.saucedemo.com/");
+        driver.get(sdHome.SD_URL);
     }
 
     @And("I see the login screen")
     public void iSeeTheLoginScreen() {
-        driver.findElement(By.xpath("//input[@id='user-name']"));
+        driver.findElement(By.xpath(sdHome.SD_USERNAME_FIELD));
     }
 
     @Then("I login as standard-user")
     public void iLoginAsStandardUser() {
-        driver.findElement(By.xpath("//input[@id='user-name']")).sendKeys("standard_user");
-        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("secret_sauce");
-        driver.findElement(By.xpath("//input[@id='login-button']")).click();
+        driver.findElement(By.xpath(sdHome.SD_USERNAME_FIELD)).sendKeys(sdHome.SD_VALID_USER);
+        driver.findElement(By.xpath(sdHome.SD_PWD_FIELD)).sendKeys(sdHome.SD_VALID_PWD);
+        driver.findElement(By.xpath(sdHome.SD_LOGIN_BUTTON)).click();
     }
 
     @And("I verify that I am logged in")
     public void iVerifyThatIAmLoggedIn(){
-        driver.findElement(By.xpath("//div[@class='app_logo' and text()='Swag Labs']"));
+        driver.findElement(By.xpath(sdHome.SD_SWAG_LOGO));
     }
 
     @Then("the driver should close")
     public void theDriverShouldClose() {
         driver.quit();
+    }
+
+    @Given("I am on the inventory page")
+    public void iAmOnTheInventoryPage() {
+        String url = driver.getTitle();
+    }
+
+    @Then("I login as invalid user")
+    public void iLoginAsInvalidUser() {
+        driver.findElement(By.xpath(sdHome.SD_USERNAME_FIELD)).sendKeys(sdHome.SD_INVALID_USER);
+        driver.findElement(By.xpath(sdHome.SD_PWD_FIELD)).sendKeys(sdHome.SD_VALID_PWD);
+        driver.findElement(By.xpath(sdHome.SD_LOGIN_BUTTON)).click();
+    }
+
+    @And("I verify the invalid user error")
+    public void iVerifyTheInvalidUserError() {
+        driver.findElement(By.xpath(sdHome.SD_ERROR_MSG));
     }
 }
