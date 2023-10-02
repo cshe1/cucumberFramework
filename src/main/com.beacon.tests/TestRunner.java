@@ -11,7 +11,10 @@ import org.junit.runner.RunWith;
 //To run all tests in the com.beacon.tests folder, leave as is.
 //Remember to rebuild project in the IDE so that the latest config will take.
 
-@CucumberOptions(features="src/main/com.beacon.tests",
+//@CucumberOptions(features="src/main/com.beacon.tests",
+//        glue={"com.beacon.steps"})
+
+@CucumberOptions(features="src/main/com.beacon.tests/discord.feature",
         glue={"com.beacon.steps"})
 
 public class TestRunner {
