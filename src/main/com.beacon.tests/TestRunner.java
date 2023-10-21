@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 //@CucumberOptions(features="src/main/com.beacon.tests",
 //        glue={"com.beacon.steps"})
 
-@CucumberOptions(features="src/main/com.beacon.tests/discord.feature",
+@CucumberOptions(features="src/main/com.beacon.tests/saucedemo.feature",
         glue={"com.beacon.steps"})
 
 public class TestRunner {
