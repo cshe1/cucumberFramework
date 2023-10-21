@@ -6,7 +6,7 @@ public class sdHome {
 
     //Fields
     public static String SD_USERNAME_FIELD = "//input[@id='user-name']";
-    public static String SD_PWD_FIELD = "//input[@id='passwor']";
+    public static String SD_PWD_FIELD = "//input[@id='']";
 
     //Users
     public static String SD_VALID_USER = "standard_user";
