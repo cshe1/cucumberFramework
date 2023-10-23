@@ -15,7 +15,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  build + test:
 
     runs-on: windows-latest
 
@@ -27,7 +27,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    - name: Run Maven Cucumber tests
       run: mvn test
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
