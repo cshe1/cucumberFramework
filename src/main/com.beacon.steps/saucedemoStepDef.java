@@ -2,6 +2,7 @@ package com.beacon.steps;
 
 import com.beacon.pages.sdHome;
 import io.cucumber.java.en.And;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -52,6 +53,18 @@ public class saucedemoStepDef {
 
     @And("I verify the invalid user error")
     public void iVerifyTheInvalidUserError() {
-        driver.findElement(By.xpath(sdHome.SD_ERROR_MSG));
+        Assert.assertTrue(driver.findElement(By.xpath(sdHome.SD_INVALID_ERROR)).isDisplayed());
+    }
+
+    @Then("I login as locked out user")
+    public void iLoginAsLockedOutUser() {
+        driver.findElement(By.xpath(sdHome.SD_USERNAME_FIELD)).sendKeys(sdHome.SD_LOCKED_USER);
+        driver.findElement(By.xpath(sdHome.SD_PWD_FIELD)).sendKeys(sdHome.SD_VALID_PWD);
+        driver.findElement(By.xpath(sdHome.SD_LOGIN_BUTTON)).click();
+    }
+
+    @And("I verify the locked out user error")
+    public void iVerifyTheLockedOutUserError() {
+        Assert.assertTrue(driver.findElement(By.xpath(sdHome.SD_LOCKED_ERROR)).isDisplayed());
     }
 }

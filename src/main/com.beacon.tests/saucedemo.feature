@@ -7,6 +7,13 @@ Feature: SauceDemo
     Then I login as standard-user
     And I verify that I am logged in
 
+  Scenario: Logging in to SauceDemo with a locke out user
+    Given I am on the SauceDemo page
+    And I see the login screen
+    Then I login as locked out user
+    And I verify the locked out user error
+
+
   Scenario: Logging in to SauceDemo with an invalid user
     Given I am on the SauceDemo page
     And I see the login screen
